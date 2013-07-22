@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#Fix the /etc/init/lxc-net.conf file
+/bin/sed -i "s/dnsmasq -u lxc-dnsmasq --strict-order/dnsmasq -u lxc-dnsmasq --server=\/lxc\/ --domain lxc --strict-order/g" /etc/init/lxc-net.conf
+
+# Add .lxc domains to NetworkManager
+if [ ! -f /etc/NetworkManager/dnsmasq.d/lxc.conf ]; then
+    echo -e "local=/lxc/10.0.3.1" > /etc/NetworkManager/dnsmasq.d/lxc.conf
+fi
+
+exit 0
