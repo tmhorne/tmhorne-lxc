@@ -1,4 +1,5 @@
 #!/bin/bash
+# Idea for the script came from https://github.com/t3rmin4t0r/notes/wiki/LXC-DNS-setup
 
 #Fix the /etc/init/lxc-net.conf file
 /bin/sed -i "s/dnsmasq -u lxc-dnsmasq --strict-order/dnsmasq -u lxc-dnsmasq --server=\/lxc\/ --domain lxc --strict-order/g" /etc/init/lxc-net.conf
